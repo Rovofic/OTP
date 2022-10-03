@@ -99,7 +99,7 @@ class Handler(SimpleHTTPServer.SimpleHTTPRequestHandler):
             return SimpleHTTPServer.SimpleHTTPRequestHandler.do_GET(self)
         else:
             self.send_response(302)
-            self.send_header("Location", "blocklyduino/index.html")
+            self.send_header("Location", "/blocklyduino/index.html")
             self.end_headers()
 
     def do_POST(self):
@@ -113,7 +113,7 @@ class Handler(SimpleHTTPServer.SimpleHTTPRequestHandler):
         if length:
             text = self.rfile.read(length)
                         
-            print "Sketch Subido: " + text
+            print ("Sketch Subido: " + text)
 
             dirname = tempfile.mkdtemp()
             sketchname = os.path.join(dirname, os.path.basename(dirname)) + ".ino"
@@ -121,7 +121,7 @@ class Handler(SimpleHTTPServer.SimpleHTTPRequestHandler):
             f.write(text + "\n")
             f.close()
 
-            print "Creando sketch en %s" % (sketchname,)
+            print ("Creando sketch en %s" % (sketchname,))
         
             # invoke arduino to build/upload
             compile_args = [
@@ -137,11 +137,11 @@ class Handler(SimpleHTTPServer.SimpleHTTPRequestHandler):
                 ])
             compile_args.append(sketchname)
 
-            print "Cargando con %s" % (" ".join(compile_args))
+            print ("Cargando con %s" % (" ".join(compile_args)))
             rc = subprocess.call(compile_args)
 
             if not rc == 0:
-                print "arduino --upload returned " + `rc`                            
+                print ("arduino --upload returned " + `rc`)                         
                 self.send_response(400)
             else:
                 self.send_response(200)
@@ -152,9 +152,9 @@ class Handler(SimpleHTTPServer.SimpleHTTPRequestHandler):
 
 
 if __name__ == '__main__':
-    print "ROVOFIC Bloclky can now be accessed at http://127.0.0.1:3306/"
+    print ("ROVOFIC Bloclky can now be accessed at http://127.0.0.1:8080/")
     server = BaseHTTPServer.HTTPServer(("127.0.0.1", 8080), Handler)
     server.pages = {}
-    url='http://127.0.0.1:3306/'
+    url='http://127.0.0.1:8080/'
     webbrowser.open_new(url)
     server.serve_forever()
