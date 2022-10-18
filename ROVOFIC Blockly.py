@@ -35,8 +35,7 @@ def get_arduino_command():
             arduino_cmd_guesses = [
                 "OTP\Arduino\Arduino_debug.exe",
                 "OTP\Arduino\Arduino.exe",
-                "c:\Program Files (x86)\Arduino\Arduino_debug.exe",
-                "c:\Program Files (x86)\Arduino\Arduino.exe"
+
             ]
         else:
             arduino_cmd_guesses = []
