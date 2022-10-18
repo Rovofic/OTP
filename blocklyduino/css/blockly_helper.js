@@ -258,7 +258,7 @@ function uploadCode(code, callback) {
 
 
 function uploadClick() {
-    var code = workspaceToCode();
+    var code = Blockly.Arduino.workspaceToCode();
 
     alert("Preparando para cargar a Arduino.");
     
@@ -281,49 +281,4 @@ function resetClick() {
         }
     });
 }
- /**
-   * Generate code for all blocks in the workspace to the specified language.
-   * @param {!Workspace=} workspace Workspace to generate code from.
-   * @return {string} Generated code.
-   */
-  
-function workspaceToCode(workspace) {
-  if (!workspace) {
-    // Backwards compatibility from before there could be multiple workspaces.
-    console.warn(
-        'No workspace specified in workspaceToCode call.  Guessing.');
-    workspace = common.getMainWorkspace();
-  }
-  let code = [];
-  this.init(workspace);
-  const blocks = workspace.getTopBlocks(true);
-  for (let i = 0, block; (block = blocks[i]); i++) {
-    let line = this.blockToCode(block);
-    if (Array.isArray(line)) {
-      // Value blocks return tuples of code and operator order.
-      // Top-level blocks don't care about operator order.
-      line = line[0];
-    }
-    if (line) {
-      if (block.outputConnection) {
-        // This block is a naked value.  Ask the language's code generator if
-        // it wants to append a semicolon, or something.
-        line = this.scrubNakedValue(line);
-        if (this.STATEMENT_PREFIX && !block.suppressPrefixSuffix) {
-          line = this.injectId(this.STATEMENT_PREFIX, block) + line;
-        }
-        if (this.STATEMENT_SUFFIX && !block.suppressPrefixSuffix) {
-          line = line + this.injectId(this.STATEMENT_SUFFIX, block);
-        }
-      }
-      code.push(line);
-    }
-  }
-  code = code.join('\n');  // Blank line between each section.
-  code = this.finish(code);
-  // Final scrubbing of whitespace.
-  code = code.replace(/^\s+\n/, '');
-  code = code.replace(/\n\s+$/, '\n');
-  code = code.replace(/[ \t]+\n/g, '\n');
-  return code;
-}
+ 
