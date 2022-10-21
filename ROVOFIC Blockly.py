@@ -33,8 +33,19 @@ def get_arduino_command():
             arduino_cmd_guesses = ["/Applications/Arduino.app/Contents/MacOS/Arduino"]
         elif platform.system() == "Windows":
             arduino_cmd_guesses = [
-                "OTP\Arduino\Arduino_debug.exe",
-                "OTP\Arduino\Arduino.exe",
+                "..\Arduino\Arduino_debug.exe",
+                "..\Arduino\Arduino.exe",
+                "..\..\Arduino\Arduino_debug.exe",
+                "..\..\Arduino\Arduino.exe",
+                "..\..\..\Arduino\Arduino_debug.exe",
+                "..\..\..\Arduino\Arduino.exe",
+                "..\..\..\..\Arduino\Arduino_debug.exe",
+                "..\..\..\..\Arduino\Arduino.exe",
+                "..\..\..\..\..\Arduino\Arduino_debug.exe",
+                "..\..\..\..\..\Arduino\Arduino.exe",
+                "..\..\..\....\..\Arduino\Arduino_debug.exe",
+                "..\..\..\....\..\Arduino\Arduino.exe"
+            
 
             ]
         else:

@@ -93,7 +93,7 @@ function renderContent() {
     xmlTextarea.value = xmlText;
     xmlTextarea.focus();
   /*} else if (content.id == 'content_javascript') {
-    content.innerHTML = Blockly.JavaScript. ();
+    content.innerHTML = Blockly.JavaScript.workspaceToCode ();
   } else if (content.id == 'content_dart') {
     content.innerHTML = Blockly.Dart.workspaceToCode();
   } else if (content.id == 'content_python') {
@@ -167,7 +167,7 @@ function init() {
            length: 3,
            colour: '#ccc',
            snap: true},
-       media: '../../media/',
+       media: 'media/',
        toolbox: toolbox});
 
   auto_save_and_restore_blocks();
