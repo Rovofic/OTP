@@ -7,7 +7,7 @@
  ** MOSI - pin 11
  ** MISO - pin 12
  ** CLK - pin 13
- ** CS - pin 4 (for MKRZero SD: SDCARD_SS_PIN)
+ ** CS - pin 4
 
  created   Nov 2010
  by David A. Mellis
@@ -22,11 +22,12 @@
 
 File myFile;
 
-void setup() {
+void setup()
+{
   // Open serial communications and wait for port to open:
   Serial.begin(9600);
   while (!Serial) {
-    ; // wait for serial port to connect. Needed for native USB port only
+    ; // wait for serial port to connect. Needed for Leonardo only
   }
 
 
@@ -40,7 +41,8 @@ void setup() {
 
   if (SD.exists("example.txt")) {
     Serial.println("example.txt exists.");
-  } else {
+  }
+  else {
     Serial.println("example.txt doesn't exist.");
   }
 
@@ -52,7 +54,8 @@ void setup() {
   // Check to see if the file exists:
   if (SD.exists("example.txt")) {
     Serial.println("example.txt exists.");
-  } else {
+  }
+  else {
     Serial.println("example.txt doesn't exist.");
   }
 
@@ -62,12 +65,14 @@ void setup() {
 
   if (SD.exists("example.txt")) {
     Serial.println("example.txt exists.");
-  } else {
+  }
+  else {
     Serial.println("example.txt doesn't exist.");
   }
 }
 
-void loop() {
+void loop()
+{
   // nothing happens after setup finishes.
 }
 

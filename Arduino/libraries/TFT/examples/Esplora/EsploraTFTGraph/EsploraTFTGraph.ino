@@ -46,7 +46,8 @@ void loop() {
   if (xPos >= 160) {
     xPos = 0;
     EsploraTFT.background(250, 16, 200);
-  } else {
+  }
+  else {
     // increment the horizontal position:
     xPos++;
   }

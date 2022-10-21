@@ -2,11 +2,11 @@
   Temperature web interface
 
  This example shows how to serve data from an analog input
- via the YunShield/Yún built-in webserver using the Bridge library.
+ via the Arduino Yún's built-in webserver using the Bridge library.
 
  The circuit:
  * TMP36 temperature sensor on analog pin A1
- * SD card attached to SD card slot of the YunShield/Yún
+ * SD card attached to SD card slot of the Arduino Yún
 
  This sketch must be uploaded via wifi. REST API must be set to "open".
 
@@ -36,17 +36,17 @@
  */
 
 #include <Bridge.h>
-#include <BridgeServer.h>
-#include <BridgeClient.h>
+#include <YunServer.h>
+#include <YunClient.h>
 
 // Listen on default port 5555, the webserver on the Yún
 // will forward there all the HTTP requests for us.
-BridgeServer server;
+YunServer server;
 String startString;
 long hits = 0;
 
 void setup() {
-  SerialUSB.begin(9600);
+  Serial.begin(9600);
 
   // Bridge startup
   pinMode(13, OUTPUT);
@@ -76,14 +76,14 @@ void setup() {
 
 void loop() {
   // Get clients coming from server
-  BridgeClient client = server.accept();
+  YunClient client = server.accept();
 
   // There is a new client?
   if (client) {
     // read the command
     String command = client.readString();
     command.trim();        //kill whitespace
-    SerialUSB.println(command);
+    Serial.println(command);
     // is "temperature" command?
     if (command == "temperature") {
 
@@ -95,7 +95,7 @@ void loop() {
         char c = time.read();
         timeString += c;
       }
-      SerialUSB.println(timeString);
+      Serial.println(timeString);
       int sensorValue = analogRead(A1);
       // convert the reading to millivolts:
       float voltage = sensorValue * (5000.0f / 1024.0f);
@@ -120,3 +120,6 @@ void loop() {
 
   delay(50); // Poll every 50ms
 }
+
+
+

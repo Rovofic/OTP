@@ -32,11 +32,12 @@ GSMServer server(80); // port 80 (http default)
 // timeout
 const unsigned long __TIMEOUT__ = 10 * 1000;
 
-void setup() {
+void setup()
+{
   // initialize serial communications and wait for port to open:
   Serial.begin(9600);
   while (!Serial) {
-    ; // wait for serial port to connect. Needed for native USB port only
+    ; // wait for serial port to connect. Needed for Leonardo only
   }
 
   // connection state
@@ -44,11 +45,13 @@ void setup() {
 
   // Start GSM shield
   // If your SIM has PIN, pass it as a parameter of begin() in quotes
-  while (notConnected) {
+  while (notConnected)
+  {
     if ((gsmAccess.begin(PINNUMBER) == GSM_READY) &
-        (gprs.attachGPRS(GPRS_APN, GPRS_LOGIN, GPRS_PASSWORD) == GPRS_READY)) {
+        (gprs.attachGPRS(GPRS_APN, GPRS_LOGIN, GPRS_PASSWORD) == GPRS_READY))
       notConnected = false;
-    } else {
+    else
+    {
       Serial.println("Not connected");
       delay(1000);
     }
@@ -73,20 +76,22 @@ void loop() {
 
 
 
-  if (client) {
-    while (client.connected()) {
-      if (client.available()) {
+  if (client)
+  {
+    while (client.connected())
+    {
+      if (client.available())
+      {
         Serial.println("Receiving request!");
         bool sendResponse = false;
         while (char c = client.read()) {
-          if (c == '\n') {
-            sendResponse = true;
-          }
+          if (c == '\n') sendResponse = true;
         }
 
         // if you've gotten to the end of the line (received a newline
         // character)
-        if (sendResponse) {
+        if (sendResponse)
+        {
           // send a standard http response header
           client.println("HTTP/1.1 200 OK");
           client.println("Content-Type: text/html");

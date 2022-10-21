@@ -45,7 +45,8 @@ void setup() {
   TFTscreen.background(0, 0, 0);
 }
 
-void loop() {
+void loop()
+{
   // read the potentiometers on A0 and A1
   int xValue = analogRead(A0);
   int yValue = analogRead(A1);

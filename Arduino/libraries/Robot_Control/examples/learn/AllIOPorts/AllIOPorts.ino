@@ -24,6 +24,7 @@
 
 #include <ArduinoRobot.h>
 #include <Wire.h>
+#include <SPI.h>
 
 // use arrays to store the names of the pins to be read
 uint8_t arr[]  = { M0, M1, M2, M3, M4, M5, M6, M7 };

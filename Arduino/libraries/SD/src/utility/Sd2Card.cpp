@@ -23,11 +23,6 @@
 //------------------------------------------------------------------------------
 #ifndef SOFTWARE_SPI
 #ifdef USE_SPI_LIB
-
-#ifndef SDCARD_SPI
-#define SDCARD_SPI SPI
-#endif
-
 #include <SPI.h>
 static SPISettings settings;
 #endif
@@ -39,7 +34,7 @@ static void spiSend(uint8_t b) {
   while (!(SPSR & (1 << SPIF)))
     ;
 #else
-  SDCARD_SPI.transfer(b);
+  SPI.transfer(b);
 #endif
 }
 /** Receive a byte from the card */
@@ -48,7 +43,7 @@ static  uint8_t spiRec(void) {
   spiSend(0XFF);
   return SPDR;
 #else
-  return SDCARD_SPI.transfer(0xFF);
+  return SPI.transfer(0xFF);
 #endif
 }
 #else  // SOFTWARE_SPI
@@ -169,7 +164,7 @@ void Sd2Card::chipSelectHigh(void) {
 #ifdef USE_SPI_LIB
   if (chip_select_asserted) {
     chip_select_asserted = 0;
-    SDCARD_SPI.endTransaction();
+    SPI.endTransaction();
   }
 #endif
 }
@@ -178,7 +173,7 @@ void Sd2Card::chipSelectLow(void) {
 #ifdef USE_SPI_LIB
   if (!chip_select_asserted) {
     chip_select_asserted = 1;
-    SDCARD_SPI.beginTransaction(settings);
+    SPI.beginTransaction(settings);
   }
 #endif
   digitalWrite(chipSelectPin_, LOW);
@@ -270,18 +265,18 @@ uint8_t Sd2Card::init(uint8_t sckRateID, uint8_t chipSelectPin) {
   // clear double speed
   SPSR &= ~(1 << SPI2X);
 #else // USE_SPI_LIB
-  SDCARD_SPI.begin();
+  SPI.begin();
   settings = SPISettings(250000, MSBFIRST, SPI_MODE0);
 #endif // USE_SPI_LIB
 #endif // SOFTWARE_SPI
 
   // must supply min of 74 clock cycles with CS high.
 #ifdef USE_SPI_LIB
-  SDCARD_SPI.beginTransaction(settings);
+  SPI.beginTransaction(settings);
 #endif
   for (uint8_t i = 0; i < 10; i++) spiSend(0XFF);
 #ifdef USE_SPI_LIB
-  SDCARD_SPI.endTransaction();
+  SPI.endTransaction();
 #endif
 
   chipSelectLow();
@@ -381,6 +376,7 @@ uint8_t Sd2Card::readBlock(uint32_t block, uint8_t* dst) {
  */
 uint8_t Sd2Card::readData(uint32_t block,
         uint16_t offset, uint16_t count, uint8_t* dst) {
+  uint16_t n;
   if (count == 0) return true;
   if ((count + offset) > 512) {
     goto fail;
@@ -530,15 +526,6 @@ uint8_t Sd2Card::setSckRate(uint8_t sckRateID) {
 #endif // USE_SPI_LIB
   return true;
 }
-#ifdef USE_SPI_LIB
-//------------------------------------------------------------------------------
-// set the SPI clock frequency
-uint8_t Sd2Card::setSpiClock(uint32_t clock)
-{
-  settings = SPISettings(clock, MSBFIRST, SPI_MODE0);
-  return true;
-}
-#endif
 //------------------------------------------------------------------------------
 // wait for card to go not busy
 uint8_t Sd2Card::waitNotBusy(uint16_t timeoutMillis) {

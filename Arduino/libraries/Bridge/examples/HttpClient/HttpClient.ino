@@ -1,7 +1,7 @@
 /*
   Yún HTTP Client
 
- This example for the YunShield/Yún shows how create a basic
+ This example for the Arduino Yún shows how create a basic
  HTTP client that connects to the internet and downloads
  content. In this case, you'll connect to the Arduino
  website and download a version of the logo as ASCII text.
@@ -27,9 +27,9 @@ void setup() {
   Bridge.begin();
   digitalWrite(13, HIGH);
 
-  SerialUSB.begin(9600);
+  Serial.begin(9600);
 
-  while (!SerialUSB); // wait for a serial connection
+  while (!Serial); // wait for a serial connection
 }
 
 void loop() {
@@ -43,9 +43,11 @@ void loop() {
   // from the server, read them and print them:
   while (client.available()) {
     char c = client.read();
-    SerialUSB.print(c);
+    Serial.print(c);
   }
-  SerialUSB.flush();
+  Serial.flush();
 
   delay(5000);
 }
+
+

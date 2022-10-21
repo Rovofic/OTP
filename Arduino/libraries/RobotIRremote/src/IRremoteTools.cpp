@@ -1,5 +1,5 @@
-#include "RobotIRremote.h"
-#include "RobotIRremoteTools.h"
+#include "IRremote.h"
+#include "IRremoteTools.h"
 #include <Arduino.h>
 
 int RECV_PIN = TKD2; // the pin the IR receiver is connected to

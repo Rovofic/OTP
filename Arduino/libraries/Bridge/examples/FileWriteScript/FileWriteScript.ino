@@ -1,7 +1,7 @@
 /*
   Write to file using FileIO classes.
 
- This sketch demonstrate how to write file into the YunShield/Yún filesystem.
+ This sketch demonstrate how to write file into the Yún filesystem.
  A shell script file is created in /tmp, and it is executed afterwards.
 
  created 7 June 2010
@@ -19,10 +19,10 @@ void setup() {
   // Setup Bridge (needed every time we communicate with the Arduino Yún)
   Bridge.begin();
   // Initialize the Serial
-  SerialUSB.begin(9600);
+  Serial.begin(9600);
 
-  while (!SerialUSB); // wait for Serial port to connect.
-  SerialUSB.println("File Write Script example\n\n");
+  while (!Serial); // wait for Serial port to connect.
+  Serial.println("File Write Script example\n\n");
 
   // Setup File IO
   FileSystem.begin();
@@ -78,6 +78,7 @@ void runScript() {
   }
   // remove the blank spaces at the beginning and the ending of the string
   output.trim();
-  SerialUSB.println(output);
-  SerialUSB.flush();
+  Serial.println(output);
+  Serial.flush();
 }
+

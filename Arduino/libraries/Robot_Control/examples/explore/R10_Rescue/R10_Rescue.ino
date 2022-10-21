@@ -24,6 +24,7 @@
 
 #include <ArduinoRobot.h> // include the robot library
 #include <Wire.h>
+#include <SPI.h>
 
 void setup() {
   // initialize the Robot, SD card, display, and speaker
@@ -64,10 +65,10 @@ void setup() {
   goToNext();
   // run the rescue sequence a second time
   rescueSequence();
-
+  
   // here you could go on ...
-
-
+ 
+  
 }
 
 void loop() {

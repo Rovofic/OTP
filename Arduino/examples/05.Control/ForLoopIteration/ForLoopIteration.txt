@@ -1,1 +1,1 @@
-Controlling multiple LEDs with a for loop. 
+Controlling multiple LEDs with a for loop and. 

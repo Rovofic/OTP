@@ -19,6 +19,7 @@
 
 #include <ArduinoRobot.h> // include the robot library
 #include <Wire.h>
+#include <SPI.h>
 
 long timerOrigin; // used for counting elapsed time
 

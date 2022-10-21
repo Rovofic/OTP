@@ -43,8 +43,10 @@ def get_arduino_command():
                 "..\..\..\..\Arduino\Arduino.exe",
                 "..\..\..\..\..\Arduino\Arduino_debug.exe",
                 "..\..\..\..\..\Arduino\Arduino.exe",
-                "..\..\..\....\..\Arduino\Arduino_debug.exe",
-                "..\..\..\....\..\Arduino\Arduino.exe"
+                "..\..\..\..\..\..\Arduino\Arduino_debug.exe",
+                "..\..\..\..\..\..\Arduino\Arduino.exe",
+                "C:\Program Files (x86)\Arduino\Arduino.exe",
+                "C:\Program Files (x86)\Arduino\Arduino_debug.exe"
             
 
             ]

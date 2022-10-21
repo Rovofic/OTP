@@ -1,1 +1,1 @@
-Change the case of a String. 
+Change the case of a string. 

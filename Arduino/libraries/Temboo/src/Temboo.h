@@ -3,7 +3,7 @@
 #
 # Temboo Arduino library
 #
-# Copyright 2017, Temboo Inc.
+# Copyright 2015, Temboo Inc.
 # 
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -23,10 +23,6 @@
 #ifndef TEMBOO_H_
 #define TEMBOO_H_
 
-#ifndef TEMBOO_LIBRARY_VERSION
-#define TEMBOO_LIBRARY_VERSION 2
-#endif
-
 #include <Arduino.h>
 
 #if defined (ARDUINO_AVR_YUN) || defined (ARDUINO_AVR_TRE)
@@ -39,31 +35,19 @@
 class TembooChoreo : public Process {
 
     public:
-    void begin() {Process::begin("temboo");}
-    void setAccountName(const String& accountName) { addParameter("-a" + accountName);}
-    void setAppKeyName(const String& appKeyName) { addParameter("-u" + appKeyName);}
-    void setAppKey(const String& appKey) { addParameter("-p" + appKey);}
-    void setChoreo(const String& choreo) { addParameter("-c" + choreo);}
-    void setCredential(const String& credentialName) { addParameter("-e" + credentialName);}
-    void setSavedInputs(const String& savedInputsName) { addParameter("-e" + savedInputsName);}
-    void setProfile(const String& profileName) { addParameter("-e" + profileName);}
-    void addInput(const String& inputName, const String& inputValue) { addParameter("-i" + inputName + ":" + inputValue);}
-    void addOutputFilter(const String& filterName, const String& filterPath, const String& variableName) { addParameter("-o" + filterName + ":" + filterPath + ":" + variableName);}
-    void setSettingsFileToWrite(const String& filePath) { addParameter("-w" + filePath);}
-    void setSettingsFileToRead(const String& filePath) { addParameter("-r" + filePath);}
-    void setGatewayAddress(const String& addr) { addParameter("-s" + addr);}
-    void addInputExpression(const String& inputName, const String& inputValue) { addParameter("-f" + inputName + ":" + inputValue);}
-    void addInputWithSensor(const String& inputName, const String& inputValue) { addParameter("-f" + inputName + ":" + inputValue);}
-    void addSensorInput(const String& sensorName, long sensorValue, const String& conversion) {addParameter("-n" + sensorName + ":" + String(sensorValue) + ":" + conversion);}
-    void addSensorInput(const String& sensorName, long sensorValue) {addParameter("-v" + sensorName + ":" + String(sensorValue));}
-    void addSensorInput(const String& sensorName, long sensorValue, const String& conversion, const String& calibrationValue) {addParameter("-b" + sensorName + ":" + String(sensorValue) + ":" + conversion + ":" + calibrationValue);}
-    void addSensorInput(const String& sensorName, long sensorValue, const String& rawLow, const String& rawHigh, const String& scaleLow, const String& scaleHigh) {addParameter("-m" + sensorName + ":" + String(sensorValue) + ":" + rawLow+ ":" + rawHigh+ ":" + scaleLow+ ":" + scaleHigh);}
-    void addSensorValue(const String& sensorName, long sensorValue, const String& conversion) {addParameter("-n" + sensorName + ":" + String(sensorValue) + ":" + conversion);}
-    void addSensorValue(const String& sensorName, long sensorValue) {addParameter("-v" + sensorName + ":" + String(sensorValue));}
-    void addSensorValue(const String& sensorName, long sensorValue, const String& conversion, const String& calibrationValue) {addParameter("-b" + sensorName + ":" + String(sensorValue) + ":" + conversion + ":" + calibrationValue);}
-    void addSensorValue(const String& sensorName, long sensorValue, const String& rawLow, const String& rawHigh, const String& scaleLow, const String& scaleHigh) {addParameter("-m" + sensorName + ":" + String(sensorValue) + ":" + rawLow+ ":" + rawHigh+ ":" + scaleLow+ ":" + scaleHigh);}
-    void setDeviceName(const String& deviceName) {addParameter("-d" + deviceName);}
-    void setDeviceType(const String& deviceType) {addParameter("-t" + deviceType);}
+        void begin();
+        void setAccountName(const String& accountName);
+        void setAppKeyName(const String& appKeyName);
+        void setAppKey(const String& appKey);
+        void setChoreo(const String& choreo);
+        void setCredential(const String& credentialName);
+        void setSavedInputs(const String& saveInputsName);
+        void setProfile(const String& profileName);
+        void addInput(const String& inputName, const String& inputValue);
+        void addOutputFilter(const String& filterName, const String& filterPath, const String& variableName);
+        void setSettingsFileToWrite(const String& filePath);
+        void setSettingsFileToRead(const String& filePath);
+
 };
 
 #else //ARDUINO_AVR_YUN
@@ -76,11 +60,8 @@ class TembooChoreo : public Process {
 #include <Client.h>
 #include <IPAddress.h>
 #include "utility/ChoreoInputSet.h"
-#include "utility/ChoreoInputExpressionSet.h"
-#include "utility/ChoreoSensorInputSet.h"
 #include "utility/ChoreoOutputSet.h"
 #include "utility/ChoreoPreset.h"
-#include "utility/ChoreoDevice.h"
 
 #define TEMBOO_ERROR_OK                   (0)
 #define TEMBOO_ERROR_ACCOUNT_MISSING      (201)
@@ -117,12 +98,12 @@ class TembooChoreo : public Stream {
         void setAppKey(const String& appKey);
         void setAppKey(const char* appKey);
         
-        // Sets the name of the choreo to be executed.
+        // sets the name of the choreo to be executed.
         // (required)
         void setChoreo(const String& choreoPath);
         void setChoreo(const char* choreoPath);
         
-        // Sets the name of the saved inputs to use when executing the choreo
+        // sets the name of the saved inputs to use when executing the choreo
         // (optional)
         void setSavedInputs(const String& savedInputsName);
         void setSavedInputs(const char* savedInputsName);
@@ -133,41 +114,14 @@ class TembooChoreo : public Stream {
         void setProfile(const String& profileName);
         void setProfile(const char* profileName);
 
-        void setDeviceType(const String& deviceType);
-        void setDeviceType(const char* deviceType);
-
-        void setDeviceName(const String& deviceName);
-        void setDeviceName(const char* deviceName);
-
-        // Sets an input to be used when executing a choreo.
+        // sets an input to be used when executing a choreo.
         // (optional or required, depending on the choreo being executed.)
         void addInput(const String& inputName, const String& inputValue);
         void addInput(const char* inputName, const char* inputValue);
         void addInput(const char* inputName, const String& inputValue);
         void addInput(const String& inputName, const char* inputValue);
-
-        // Sets a Choreo input that contains a sensor value to be converted by Temboo
-        void addInputWithSensor(const String& inputName, const String& inputValue);
-        void addInputWithSensor(const char* inputName, const String& inputValue);
-        void addInputWithSensor(const char* inputName, const char* inputValue);
-        // Keeping legacy methods
-        void addInputExpression(const String& inputName, const String& inputValue);
-        void addInputExpression(const char* inputName, const String& inputValue);
-        void addInputExpression(const char* inputName, const char* inputValue);
-
-        // Sets in input that is using a sensor value. Different parameters are needed depending
-        // on the type of sensor being used.
-        void addSensorValue(const char* sensorName, int sensorValue, const char* conversion);
-        void addSensorValue(const char* sensorName, int sensorValue);
-        void addSensorValue(const char* sensorName, int sensorValue, const char* conversion, const char* calibrationValue);
-        void addSensorValue(const char* sensorName, int sensorValue, const char* rawLow, const char* rawHigh, const char* scaleLow, const char* scaleHigh);
-        // Keeping legacy methods
-        void addSensorInput(const char* sensorName, int sensorValue, const char* conversion);
-        void addSensorInput(const char* sensorName, int sensorValue);
-        void addSensorInput(const char* sensorName, int sensorValue, const char* conversion, const char* calibrationValue);
-        void addSensorInput(const char* sensorName, int sensorValue, const char* rawLow, const char* rawHigh, const char* scaleLow, const char* scaleHigh);
-
-        // Sets an output filter to be used to process the choreo output
+        
+        // sets an output filter to be used to process the choreo output
         // (optional)
         void addOutputFilter(const char* filterName, const char* filterPath, const char* variableName);
         void addOutputFilter(const String& filterName, const char* filterPath, const char* variableName);
@@ -178,13 +132,12 @@ class TembooChoreo : public Stream {
         void addOutputFilter(const char* filterName, const String& filterPath, const String& variableName);
         void addOutputFilter(const String& filterName, const String& filterPath, const String& variableName);
        
-        // Run the choreo using the current input info
+        // run the choreo using the current input info
         int run();
-        // Run the choreo with a user specified timeout
+
+        // run the choreo on the Temboo server at the given IP address and port
+        // (used only when instructed by Temboo customer support.)
         int run(uint16_t timeoutSecs);
-    
-        // Run the choreo on the Temboo server at the given IP address and port
-        int run(IPAddress addr, uint16_t port);
         int run(IPAddress addr, uint16_t port, uint16_t timeoutSecs);
 
         void close();
@@ -201,12 +154,8 @@ class TembooChoreo : public Stream {
 
     protected:
         ChoreoInputSet m_inputs;
-        ChoreoInputExpressionSet m_expressions;
-        ChoreoSensorInputSet m_sensors;
         ChoreoOutputSet m_outputs;
         ChoreoPreset m_preset;
-        ChoreoDevice m_deviceType;
-        ChoreoDevice m_deviceName;
 
         const char* m_accountName;
         const char* m_appKeyValue;

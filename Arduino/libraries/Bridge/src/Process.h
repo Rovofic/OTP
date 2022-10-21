@@ -55,7 +55,7 @@ class Process : public Stream {
 
   private:
     BridgeClass &bridge;
-    uint8_t handle;
+    unsigned int handle;
     String *cmdline;
     boolean started;
 

@@ -22,6 +22,7 @@
 // include the robot library
 #include <ArduinoRobot.h>
 #include <Wire.h>
+#include <SPI.h>
 
 int speedLeft;
 int speedRight;
@@ -44,11 +45,10 @@ void loop() {
   int diff = compassValue - direc;
 
   // modify degress
-  if (diff > 180) {
+  if (diff > 180)
     diff = -360 + diff;
-  } else if (diff < -180) {
+  else if (diff < -180)
     diff = 360 + diff;
-  }
 
   // Make the robot turn to its proper orientation
   diff = map(diff, -180, 180, -255, 255);

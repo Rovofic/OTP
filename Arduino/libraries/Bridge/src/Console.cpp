@@ -42,28 +42,31 @@ size_t ConsoleClass::write(uint8_t c) {
   if (autoFlush) {
     uint8_t tmp[] = { 'P', c };
     bridge.transfer(tmp, 2);
+    return 1;
   } else {
     outBuffer[outBuffered++] = c;
     if (outBuffered == outBufferSize)
       flush();
   }
-  return 1;
 }
 
 size_t ConsoleClass::write(const uint8_t *buff, size_t size) {
   if (autoFlush) {
-    uint8_t tmp[] = { 'P' };
-    bridge.transfer(tmp, 1, buff, size, NULL, 0);
+    // TODO: do it in a more efficient way
+    uint8_t *tmp = new uint8_t[size + 1];
+    tmp[0] = 'P';
+    memcpy(tmp + 1, buff, size);
+    bridge.transfer(tmp, size + 1);
+    delete[] tmp;
+    return size;
   } else {
-    size_t sent = size;
-    while (sent > 0) {
+    while (size > 0) {
       outBuffer[outBuffered++] = *buff++;
-      sent--;
+      size--;
       if (outBuffered == outBufferSize)
         flush();
     }
   }
-  return size;
 }
 
 void ConsoleClass::flush() {

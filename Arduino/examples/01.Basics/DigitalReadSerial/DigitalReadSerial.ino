@@ -1,12 +1,9 @@
 /*
   DigitalReadSerial
+ Reads a digital input on pin 2, prints the result to the serial monitor
 
-  Reads a digital input on pin 2, prints the result to the Serial Monitor
-
-  This example code is in the public domain.
-
-  http://www.arduino.cc/en/Tutorial/DigitalReadSerial
-*/
+ This example code is in the public domain.
+ */
 
 // digital pin 2 has a pushbutton attached to it. Give it a name:
 int pushButton = 2;
@@ -27,3 +24,6 @@ void loop() {
   Serial.println(buttonState);
   delay(1);        // delay in between reads for stability
 }
+
+
+

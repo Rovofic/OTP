@@ -2,7 +2,7 @@
   Running process using Process class.
 
  This sketch demonstrate how to run linux processes
- using a YunShield/Yún
+ using an Arduino Yún.
 
  created 5 Jun 2013
  by Cristian Maglie
@@ -20,10 +20,10 @@ void setup() {
   Bridge.begin();
 
   // Initialize Serial
-  SerialUSB.begin(9600);
+  Serial.begin(9600);
 
   // Wait until a Serial Monitor is connected.
-  while (!SerialUSB);
+  while (!Serial);
 
   // run various example processes
   runCurl();
@@ -46,10 +46,10 @@ void runCurl() {
   // A process output can be read with the stream methods
   while (p.available() > 0) {
     char c = p.read();
-    SerialUSB.print(c);
+    Serial.print(c);
   }
   // Ensure the last bit of data is sent.
-  SerialUSB.flush();
+  Serial.flush();
 }
 
 void runCpuInfo() {
@@ -60,12 +60,13 @@ void runCpuInfo() {
   p.addParameter("/proc/cpuinfo"); // Add the cpuifo file path as parameter to cut
   p.run();		// Run the process and wait for its termination
 
-  // Print command output on the SerialUSB.
+  // Print command output on the Serial.
   // A process output can be read with the stream methods
   while (p.available() > 0) {
     char c = p.read();
-    SerialUSB.print(c);
+    Serial.print(c);
   }
   // Ensure the last bit of data is sent.
-  SerialUSB.flush();
+  Serial.flush();
 }
+

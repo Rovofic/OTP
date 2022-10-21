@@ -1,1 +1,1 @@
-Add Strings together in a variety of ways.
+Add strings together in a variety of ways.

@@ -1,25 +1,27 @@
 /*
-  Memsic2125
+   Memsic2125
 
-  Read the Memsic 2125 two-axis accelerometer. Converts the pulses output by the
-  2125 into milli-g's (1/1000 of Earth's gravity) and prints them over the
-  serial connection to the computer.
+   Read the Memsic 2125 two-axis accelerometer.  Converts the
+   pulses output by the 2125 into milli-g's (1/1000 of earth's
+   gravity) and prints them over the serial connection to the
+   computer.
 
-  The circuit:
-	- X output of accelerometer to digital pin 2
-	- Y output of accelerometer to digital pin 3
-	- +V of accelerometer to +5V
-	- GND of accelerometer to ground
+   The circuit:
+	* X output of accelerometer to digital pin 2
+	* Y output of accelerometer to digital pin 3
+	* +V of accelerometer to +5V
+	* GND of accelerometer to ground
 
-  created 6 Nov 2008
-  by David A. Mellis
-  modified 30 Aug 2011
-  by Tom Igoe
+   http://www.arduino.cc/en/Tutorial/Memsic2125
 
-  This example code is in the public domain.
+   created 6 Nov 2008
+   by David A. Mellis
+   modified 30 Aug 2011
+   by Tom Igoe
 
-  http://www.arduino.cc/en/Tutorial/Memsic2125
-*/
+   This example code is in the public domain.
+
+ */
 
 // these constants won't change:
 const int xPin = 2;		// X output of the accelerometer
@@ -28,7 +30,8 @@ const int yPin = 3;		// Y output of the accelerometer
 void setup() {
   // initialize serial communications:
   Serial.begin(9600);
-  // initialize the pins connected to the accelerometer as inputs:
+  // initialize the pins connected to the accelerometer
+  // as inputs:
   pinMode(xPin, INPUT);
   pinMode(yPin, INPUT);
 }
@@ -45,7 +48,7 @@ void loop() {
 
   // convert the pulse width into acceleration
   // accelerationX and accelerationY are in milli-g's:
-  // Earth's gravity is 1000 milli-g's, or 1 g.
+  // earth's gravity is 1000 milli-g's, or 1g.
   accelerationX = ((pulseX / 10) - 500) * 8;
   accelerationY = ((pulseY / 10) - 500) * 8;
 

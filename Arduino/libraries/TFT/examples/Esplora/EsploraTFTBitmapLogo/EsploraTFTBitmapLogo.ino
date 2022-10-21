@@ -50,7 +50,7 @@ void setup() {
   // print some diagnostic info
   Serial.begin(9600);
   while (!Serial) {
-    // wait for serial port to connect. Needed for native USB port only
+    // wait for serial monitor to be open
   }
 
   // try to access the SD card. If that fails (e.g.
@@ -73,9 +73,9 @@ void setup() {
   logo = EsploraTFT.loadImage("arduino.bmp");
   if (logo.isValid()) {
     Esplora.writeGreen(255);
-  } else {
-    Esplora.writeRed(255);
   }
+  else
+    Esplora.writeRed(255);
 
 }
 

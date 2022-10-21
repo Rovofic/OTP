@@ -1,1 +1,1 @@
-How to initialize String objects. 
+How to initialize string objects. 
