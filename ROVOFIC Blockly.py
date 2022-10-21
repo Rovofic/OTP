@@ -33,20 +33,28 @@ def get_arduino_command():
             arduino_cmd_guesses = ["/Applications/Arduino.app/Contents/MacOS/Arduino"]
         elif platform.system() == "Windows":
             arduino_cmd_guesses = [
-                "..\Arduino\Arduino_debug.exe",
-                "..\Arduino\Arduino.exe",
-                "..\..\Arduino\Arduino_debug.exe",
-                "..\..\Arduino\Arduino.exe",
-                "..\..\..\Arduino\Arduino_debug.exe",
-                "..\..\..\Arduino\Arduino.exe",
-                "..\..\..\..\Arduino\Arduino_debug.exe",
-                "..\..\..\..\Arduino\Arduino.exe",
-                "..\..\..\..\..\Arduino\Arduino_debug.exe",
-                "..\..\..\..\..\Arduino\Arduino.exe",
-                "..\..\..\..\..\..\Arduino\Arduino_debug.exe",
-                "..\..\..\..\..\..\Arduino\Arduino.exe",
+                # "..\Arduino\Arduino_debug.exe",
+                # "..\Arduino\Arduino.exe",
+                # "..\..\Arduino\Arduino_debug.exe",
+                # "..\..\Arduino\Arduino.exe",
+                # "..\..\..\Arduino\Arduino_debug.exe",
+                # "..\..\..\Arduino\Arduino.exe",
+                # "..\..\..\..\Arduino\Arduino_debug.exe",
+                # "..\..\..\..\Arduino\Arduino.exe",
+                # "..\..\..\..\..\Arduino\Arduino_debug.exe",
+                # "..\..\..\..\..\Arduino\Arduino.exe",
+                # "..\..\..\..\..\..\Arduino\Arduino_debug.exe",
+                # "..\..\..\..\..\..\Arduino\Arduino.exe",
+                "C:\Program Files\Arduino\Arduino_debug.exe",
+                "C:\Program Files\Arduino\Arduino.exe",
+                     "C:\Program Files (x86)\Arduino\Arduino_debug.exe",
                 "C:\Program Files (x86)\Arduino\Arduino.exe",
-                "C:\Program Files (x86)\Arduino\Arduino_debug.exe"
+                # # "C:\Users\Desarrollo\Documents\GitHub\OTP\Arduino_debug.exe",
+                # # "C:\Users\Desarrollo\Documents\GitHub\OTP\Arduino.exe",
+                # "\Arduino\Arduino_debug.exe",
+                # "\Arduino\Arduino.exe"
+                "C:\Users\..\..\..\..\Arduino\Arduino_debug.exe"
+                "C:\Users\..\..\..\..\Arduino\Arduino.exe"
             
 
             ]
