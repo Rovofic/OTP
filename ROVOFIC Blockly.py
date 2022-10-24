@@ -47,10 +47,10 @@ def get_arduino_command():
                 # "..\..\..\..\..\..\Arduino\Arduino.exe",
                 "C:\Program Files\Arduino\Arduino_debug.exe",
                 "C:\Program Files\Arduino\Arduino.exe",
-                     "C:\Program Files (x86)\Arduino\Arduino_debug.exe",
+                "C:\Program Files (x86)\Arduino\Arduino_debug.exe",
                 "C:\Program Files (x86)\Arduino\Arduino.exe",
-                # # "C:\Users\Desarrollo\Documents\GitHub\OTP\Arduino_debug.exe",
-                # # "C:\Users\Desarrollo\Documents\GitHub\OTP\Arduino.exe",
+                # "C:\Users\Desarrollo\Documents\GitHub\OTP\Arduino_debug.exe",
+                # "C:\Users\Desarrollo\Documents\GitHub\OTP\Arduino.exe",
                 # "\Arduino\Arduino_debug.exe",
                 # "\Arduino\Arduino.exe"
                 "C:\Users\..\..\..\..\Arduino\Arduino_debug.exe"
