@@ -204,7 +204,7 @@ Blockly.Blocks.rovofic_shield={
     this.setColour(190);
     this.appendDummyInput()
         .appendField("ROVOFIC SHIELD BASIC")
-        .appendField(new Blockly.FieldImage("http://rovofic.com/Public_Web/Shield_1.png",100,100))
+        .appendField(new Blockly.FieldImage("media/Shield_1.png",100,100))
         .appendField(new Blockly.FieldDropdown([["Stop","stop"],["Forward","forward"],["Right","right"],["Left","left"],["Backward","backward"]]),"DIRECTION");
     this.setPreviousStatement(!0,null);this.setNextStatement(!0,null);this.setTooltip("Drive two brushed DC motors")}};
 
@@ -213,7 +213,7 @@ Blockly.Blocks.rovofic_motor_shield_b={helpUrl:"http://www.rovofic.com",init:fun
   this.setColour(190);
   this.appendDummyInput()
       .appendField("ROVOFIC MOTION BASIC")
-      .appendField(new Blockly.FieldImage("http://rovofic.com/Public_Web/Motion_1.png",100,100))
+      .appendField(new Blockly.FieldImage("media/Motion_1.png",100,100))
       .appendField(new Blockly.FieldDropdown([["Stop","stop1"],["Forward","forward1"],["Right","right1"],["Left","left1"],["Backward","backward1"]]),"DIRECTION1");this.setPreviousStatement(!0,null);this.setNextStatement(!0,null);this.setTooltip("Drive two brushed DC motors")}};
 
       Blockly.Blocks.rovofic_motor_shield_m={helpUrl:"http://www.rovofic.com",init:function()
@@ -221,7 +221,7 @@ Blockly.Blocks.rovofic_motor_shield_b={helpUrl:"http://www.rovofic.com",init:fun
   this.setColour(190);
   this.appendDummyInput()
     .appendField("ROVOFIC SHIELD MOTOR")
-    .appendField(new Blockly.FieldImage("http://rovofic.com/Public_Web/Shield_1.png",100,100))
+    .appendField(new Blockly.FieldImage("media/Shield_1.png",100,100))
     .appendField(new Blockly.FieldDropdown([["M1","m1"],["M2","m2"]]),"MOTOR");
     this.appendValueInput("SPEED","Number")
         .setCheck("Number")
@@ -244,7 +244,7 @@ Blockly.Blocks.ROVOFIC_Kid_Forward={init:function()
     this.setColour(65);
     this.appendDummyInput()
         .appendField(" FORWARD ")
-        .appendField(new Blockly.FieldImage("http://rovofic.com/Public_Web/F_1.gif",64,64));
+        .appendField(new Blockly.FieldImage("media/F_1.gif",64,64));
     this.setInputsInline(!0);
     this.setPreviousStatement(!0,null);
     this.setNextStatement(!0,null);
@@ -255,7 +255,7 @@ Blockly.Blocks.ROVOFIC_Kid_Backward={init:function()
     this.setColour(120);
     this.appendDummyInput()
         .appendField(" BACKWARD ")
-        .appendField(new Blockly.FieldImage("http://rovofic.com/Public_Web/F_2.gif",64,64));
+        .appendField(new Blockly.FieldImage("media/F_2.gif",64,64));
     this.setInputsInline(!0);
     this.setPreviousStatement(!0,null);
     this.setNextStatement(!0,null);
@@ -266,7 +266,7 @@ Blockly.Blocks.ROVOFIC_Kid_Left={init:function()
     this.setColour(190);
     this.appendDummyInput()
         .appendField(" LEFT ")
-        .appendField(new Blockly.FieldImage("http://rovofic.com/Public_Web/F_3.gif",64,64));
+        .appendField(new Blockly.FieldImage("media/F_3.gif",64,64));
     this.setInputsInline(!0);
     this.setPreviousStatement(!0,null);
     this.setNextStatement(!0,null);
@@ -277,7 +277,7 @@ Blockly.Blocks.ROVOFIC_Kid_Rigth={init:function()
     this.setColour(20);
     this.appendDummyInput()
         .appendField(" RIGTH ")
-        .appendField(new Blockly.FieldImage("http://rovofic.com/Public_Web/F_4.gif",64,64));
+        .appendField(new Blockly.FieldImage("media/F_4.gif",64,64));
         this.setInputsInline(!0);
         this.setPreviousStatement(!0,null);
         this.setNextStatement(!0,null);
@@ -291,7 +291,7 @@ Blockly.Blocks.rovofic_motion={helpUrl:"http://www.rovofic.com",init:function()
   this.setColour(170);
   this.appendDummyInput()
       .appendField("ROVOFIC MOTION BASIC")
-      .appendField(new Blockly.FieldImage("http://rovofic.com/Public_Web/Motion_1.png",100,100))
+      .appendField(new Blockly.FieldImage("media/Motion_1.png",100,100))
       .appendField(new Blockly.FieldDropdown([["Stop","stopm"],["Forward","forwardm"],["Right","rightm"],["Left","leftm"],["Backward","backwardm"]]),"DIRECTIONm");this.setPreviousStatement(!0,null);this.setNextStatement(!0,null);this.setTooltip("Drive two brushed DC motors")}};
 
 Blockly.Blocks.rovofic_motor_motion=
@@ -301,7 +301,7 @@ Blockly.Blocks.rovofic_motor_motion=
   this.setColour(170);
   this.appendDummyInput()
   .appendField("ROVOFIC MOTION MOTOR")
-      .appendField(new Blockly.FieldImage("http://rovofic.com/Public_Web/Motion_1.png",100,100)).appendField(new Blockly.FieldDropdown([["M1","m1m"],["M2","m2m"]]),"MOTORm");
+      .appendField(new Blockly.FieldImage("media/Motion_1.png",100,100)).appendField(new Blockly.FieldDropdown([["M1","m1m"],["M2","m2m"]]),"MOTORm");
   this.appendValueInput("SPEED","Number").setCheck("Number").setAlign(Blockly.ALIGN_RIGHT).appendField("Speed");
   this.setPreviousStatement(!0,null);
   this.setNextStatement(!0,null);
