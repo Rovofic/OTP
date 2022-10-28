@@ -120,7 +120,7 @@ class Handler(SimpleHTTPServer.SimpleHTTPRequestHandler):
             return SimpleHTTPServer.SimpleHTTPRequestHandler.do_GET(self)
         else:
             self.send_response(302)
-            self.send_header("Location", "/blocklyduino/index.html")
+            self.send_header("Location", "index.exe")
             self.end_headers()
 
     def do_POST(self):
